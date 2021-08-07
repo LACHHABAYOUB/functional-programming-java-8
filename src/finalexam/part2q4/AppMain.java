@@ -20,11 +20,9 @@ public class AppMain {
 	 * @return list of exclusive numbers found in just one list
 	 */
 	private static List<Integer> findExclusiveNumbers(List<Integer> l1, List<Integer> l2) {
+	
+		return (List<Integer>) Stream.concat(l1.stream().filter(n -> !l2.contains(n)),l2.stream().filter(n -> !l1.contains(n))).collect(Collectors.toList()); // return [1, 3, 4, 6]
 
-		l1.stream().filter(n -> !l2.contains(n)).collect(Collectors.toList());
-		l2.stream().filter(n -> !l1.contains(n)).collect(Collectors.toList());
-		// return List.stream().concat(l1.stream().filter(n -> !l2.contains(n)).collect(Collectors.toList()),l2.stream().filter(n -> !l1.contains(n)).collect(Collectors.toList()));
-		return  l1.stream().filter(n -> !l2.contains(n)).collect(Collectors.toList());
 
 	}
 }
